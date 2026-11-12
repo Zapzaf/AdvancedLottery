@@ -1,6 +1,6 @@
 package com.gmail.ianlim224.advancedlottery.gui;
 
-import com.cryptomorin.xseries.XMaterial;
+import com.gmail.ianlim224.advancedlottery.utils.Materials;
 import com.gmail.ianlim224.advancedlottery.AdvancedLottery;
 import com.gmail.ianlim224.advancedlottery.ItemGrabber;
 import com.gmail.ianlim224.advancedlottery.items.MenuItems;
@@ -36,7 +36,7 @@ public class HelpGUI {
 
         for (int i = 0; i < 54; i++) {
             //parse item allows for itemstack data to be changed
-            inventory.setItem(i, new ItemBuilder(XMaterial.matchXMaterial(MenuItems.HELP_BACKGROUND_MATERIAL.getStringValue()).get().parseItem())
+            inventory.setItem(i, new ItemBuilder(Materials.resolve(MenuItems.HELP_BACKGROUND_MATERIAL.getStringValue()))
                     .setName(" ").toItemStack());
         }
         inventory.setItem(4, ItemGrabber.getInstance(plugin).getBookInstructions());

@@ -1,6 +1,6 @@
 package com.gmail.ianlim224.advancedlottery.tasks;
 
-import com.cryptomorin.xseries.XMaterial;
+import com.gmail.ianlim224.advancedlottery.utils.Materials;
 import com.gmail.ianlim224.advancedlottery.AdvancedLottery;
 import com.gmail.ianlim224.advancedlottery.gui.HelpGUI;
 import com.gmail.ianlim224.advancedlottery.gui.LotteryGUI;
@@ -65,9 +65,9 @@ public class ItemTask implements Runnable {
     }
 
     private void updatePotAndClock() {
-        setPot(new ItemBuilder(XMaterial.matchXMaterial(MenuItems.MONEY_POT_MATERIAL.getStringValue()).get().parseMaterial()).setName(MenuItems.MONEY_POT_NAME.getStringValue())
+        setPot(new ItemBuilder(Materials.resolve(MenuItems.MONEY_POT_MATERIAL.getStringValue())).setName(MenuItems.MONEY_POT_NAME.getStringValue())
                 .setLore(AdvancedLottery.replace(MenuItems.MONEY_POT_LORE.getListValue(), "%money%", SpigotCommons.formatMoney(lotteryPot.getMoneyInPot()))).toItemStack());
-        setClock(new ItemBuilder(new ItemStack(XMaterial.matchXMaterial(MenuItems.TIME_PREVIEW_MATERIAL.getStringValue()).get().parseMaterial())).setName(MenuItems.TIME_PREVIEW_NAME.getStringValue())
+        setClock(new ItemBuilder(new ItemStack(Materials.resolve(MenuItems.TIME_PREVIEW_MATERIAL.getStringValue()))).setName(MenuItems.TIME_PREVIEW_NAME.getStringValue())
                 .setLore(MenuItems.TIME_PREVIEW_LORE.getStringValue().replaceAll("%time%", plugin.getLotteryTimer().time(false))
                         .replaceAll("%time_short%", plugin.getLotteryTimer().time(true)))
                 .toItemStack());

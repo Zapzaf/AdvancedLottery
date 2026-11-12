@@ -1,6 +1,6 @@
 package com.gmail.ianlim224.advancedlottery.gui;
 
-import com.cryptomorin.xseries.XMaterial;
+import com.gmail.ianlim224.advancedlottery.utils.Materials;
 import com.gmail.ianlim224.advancedlottery.AdvancedLottery;
 import com.gmail.ianlim224.advancedlottery.clickablechat.ClickableText;
 import com.gmail.ianlim224.advancedlottery.items.MenuItems;
@@ -33,7 +33,7 @@ public class PlayerStatsGUI implements Listener {
         Bukkit.getPluginManager().registerEvents(this, plugin);
 
         for (int i = 0; i != 54; i++) {
-            inv.setItem(i, new ItemBuilder(XMaterial.MAGENTA_STAINED_GLASS_PANE.parseMaterial()).setName(" ").toItemStack());
+            inv.setItem(i, new ItemBuilder(Material.MAGENTA_STAINED_GLASS_PANE).setName(" ").toItemStack());
         }
     }
 
@@ -44,8 +44,8 @@ public class PlayerStatsGUI implements Listener {
 
         String target = player.getName();
         LotteryTicket ticket = LotteryTicket.getInstance(AdvancedLottery.getInstance());
-        ItemStack message = new ItemBuilder(XMaterial.matchXMaterial(MenuItems.SEND_MESSAGE_MATERIAL.getStringValue()).get().parseMaterial()).setName(MenuItems.SEND_MESSAGE_NAME.getStringValue()).setLore(MenuItems.SEND_MESSAGE_LORE.getStringValue().replaceAll("%player%", target)).toItemStack();
-        ItemStack ticketsBought = new ItemBuilder(XMaterial.matchXMaterial(MenuItems.TICKETS_BOUGHT_MATERIAL.getStringValue()).get().parseMaterial()).setName(MenuItems.TICKETS_BOUGHT_NAME.getStringValue()).setLore(MenuItems.TICKETS_BOUGHT_LORE.getStringValue().replaceAll("%player%", target).replaceAll("%ticket%", Integer.toString(ticket.getTicketsBought(player.getUniqueId())))).toItemStack();
+        ItemStack message = new ItemBuilder(Materials.resolve(MenuItems.SEND_MESSAGE_MATERIAL.getStringValue())).setName(MenuItems.SEND_MESSAGE_NAME.getStringValue()).setLore(MenuItems.SEND_MESSAGE_LORE.getStringValue().replaceAll("%player%", target)).toItemStack();
+        ItemStack ticketsBought = new ItemBuilder(Materials.resolve(MenuItems.TICKETS_BOUGHT_MATERIAL.getStringValue())).setName(MenuItems.TICKETS_BOUGHT_NAME.getStringValue()).setLore(MenuItems.TICKETS_BOUGHT_LORE.getStringValue().replaceAll("%player%", target).replaceAll("%ticket%", Integer.toString(ticket.getTicketsBought(player.getUniqueId())))).toItemStack();
 
         inv.setItem(39, message);
         inv.setItem(41, ticketsBought);

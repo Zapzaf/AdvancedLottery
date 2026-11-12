@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import org.apache.commons.lang.text.StrSubstitutor;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 
@@ -22,9 +21,8 @@ public class DataPrinter extends DataHandler {
 		placeholders.put("money", SpigotCommons.formatMoney(data.getMoney()));
 		placeholders.put("money_won", SpigotCommons.formatMoney(data.getMoneyWon()));
 		
-		StrSubstitutor strSubstitutor = new StrSubstitutor(placeholders, "%", "%");
 		for(String msg : plugin.getConfig().getStringList("mysql.stats_message")) {
-			target.sendMessage(AdvancedLottery.f(strSubstitutor.replace(msg)));
+			target.sendMessage(AdvancedLottery.f(SpigotCommons.replacePlaceholders(msg, placeholders)));
 		}
 	}
 

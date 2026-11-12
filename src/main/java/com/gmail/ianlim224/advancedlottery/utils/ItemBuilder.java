@@ -5,10 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.SkullMeta;
@@ -44,15 +46,6 @@ public class ItemBuilder {
      is= new ItemStack(m, amount);
    }
    /**
-    * Create a new ItemBuilder from scratch.
-    * @param m The material of the item.
-    * @param amount The amount of the item.
-    * @param durability The durability of the item.
-    */
-   public ItemBuilder(Material m, int amount, byte durability){
-     is = new ItemStack(m, amount, durability);
-   }
-   /**
     * Clone the ItemBuilder into a new one.
     * @return The cloned instance.
     */
@@ -60,11 +53,15 @@ public class ItemBuilder {
      return new ItemBuilder(is);
    }
    /**
-    * Change the durability of the item.
-    * @param dur The durability to set it to.
+    * Change the damage of the item. Only affects damageable items.
+    * @param damage The damage to set it to.
     */
-   public ItemBuilder setDurability(short dur){
-     is.setDurability(dur);
+   public ItemBuilder setDamage(int damage){
+     ItemMeta im = is.getItemMeta();
+     if (im instanceof Damageable) {
+       ((Damageable) im).setDamage(damage);
+       is.setItemMeta(im);
+     }
      return this;
    }
    /**
@@ -101,7 +98,7 @@ public class ItemBuilder {
 public ItemBuilder setSkullOwner(String owner){
      try{
        SkullMeta im = (SkullMeta)is.getItemMeta();
-       im.setOwner(owner);
+       im.setOwningPlayer(Bukkit.getOfflinePlayer(owner));
        is.setItemMeta(im);
      }catch(ClassCastException expected){}
      return this;
@@ -126,10 +123,12 @@ public ItemBuilder setSkullOwner(String owner){
      return this;
    }
    /**
-    * Sets infinity durability on the item by setting the durability to Short.MAX_VALUE.
+    * Makes the item unbreakable.
     */
    public ItemBuilder setInfinityDurability(){
-     is.setDurability(Short.MAX_VALUE);
+     ItemMeta im = is.getItemMeta();
+     im.setUnbreakable(true);
+     is.setItemMeta(im);
      return this;
    }
    /**

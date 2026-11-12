@@ -6,7 +6,6 @@ import com.gmail.ianlim224.advancedlottery.commands.Executable;
 import com.gmail.ianlim224.advancedlottery.commands.Permissions;
 import com.gmail.ianlim224.advancedlottery.object.LotteryPot;
 import com.gmail.ianlim224.advancedlottery.utils.SpigotCommons;
-import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.command.CommandSender;
 
 public class AddPotCommand implements Executable {
@@ -17,7 +16,7 @@ public class AddPotCommand implements Executable {
             return CommandResponse.INCORRECT_ARGS;
         }
 
-        if (!NumberUtils.isNumber(args[1])) {
+        if (!SpigotCommons.isNumber(args[1])) {
             return CommandResponse.INCORRECT_ARGS;
         }
 

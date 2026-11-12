@@ -1,6 +1,6 @@
 package com.gmail.ianlim224.advancedlottery.legacy;
 
-import com.cryptomorin.xseries.XMaterial;
+import org.bukkit.Material;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
@@ -12,7 +12,7 @@ public class V_1_13_SkullImpl implements SkullManager {
 
     @Override
     public ItemStack getSkull(OfflinePlayer player) {
-        ItemStack skull = new ItemStack(XMaterial.PLAYER_HEAD.parseMaterial());
+        ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
         skull = setNameAndLore(skull, player);
 
         SkullMeta meta = (SkullMeta) skull.getItemMeta();

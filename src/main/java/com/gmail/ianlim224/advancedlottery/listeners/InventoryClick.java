@@ -1,6 +1,6 @@
 package com.gmail.ianlim224.advancedlottery.listeners;
 
-import com.cryptomorin.xseries.XMaterial;
+import org.bukkit.Material;
 import com.gmail.ianlim224.advancedlottery.AdvancedLottery;
 import com.gmail.ianlim224.advancedlottery.ItemGrabber;
 import com.gmail.ianlim224.advancedlottery.gui.*;
@@ -47,7 +47,7 @@ public class InventoryClick implements Listener {
                 return;
             }
 
-            if (item.getType() == XMaterial.PLAYER_HEAD.parseMaterial()) {
+            if (item.getType() == Material.PLAYER_HEAD) {
                 OfflinePlayer target = plugin.getSkullManager().getPlayer(item);
                 PlayerStatsGUI statsGui = new PlayerStatsGUI(target, plugin);
                 statsGui.openGui(player);

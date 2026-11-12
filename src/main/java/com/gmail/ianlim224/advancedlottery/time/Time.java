@@ -3,6 +3,7 @@ package com.gmail.ianlim224.advancedlottery.time;
 import com.gmail.ianlim224.advancedlottery.AdvancedLottery;
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.util.StringJoiner;
 import java.util.concurrent.TimeUnit;
 
 public class Time {
@@ -82,19 +83,13 @@ public class Time {
             seconds = getSeconds() == 0 ? "" : getSeconds() + " " + config.getString("time.seconds_short");
         }
 
-        //add apostrophes
-        if (!"".equals(days) && !"".equals(hours)) {
-            hours = ", " + hours;
+        // join the non-empty units with commas, e.g. "2 hours, 5 seconds"
+        StringJoiner joiner = new StringJoiner(", ");
+        for (String part : new String[]{days, hours, minutes, seconds}) {
+            if (!part.isEmpty()) {
+                joiner.add(part);
+            }
         }
-
-        if (!"".equals(hours) && !"".equals(minutes)) {
-            minutes = ", " + minutes;
-        }
-
-        if (!"".equals(minutes) && !"".equals(seconds)) {
-            seconds = ", " + seconds;
-        }
-
-        return days + hours + minutes + seconds;
+        return joiner.toString();
     }
 }

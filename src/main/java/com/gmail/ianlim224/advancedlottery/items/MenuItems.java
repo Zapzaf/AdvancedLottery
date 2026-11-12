@@ -12,7 +12,7 @@ public enum MenuItems {
     // time preview
     TIME_PREVIEW_NAME("time_preview.name", false, "&d&lTIME TO DRAW"),
     TIME_PREVIEW_LORE("time_preview.lore", true, "&7Time left until next draw is &2%time%"),
-    TIME_PREVIEW_MATERIAL("time_preview.material", false, "WATCH"),
+    TIME_PREVIEW_MATERIAL("time_preview.material", false, "CLOCK"),
 
     // money pot
     MONEY_POT_NAME("money_pot.name", false, "&e&lMONEY IN POT"),
@@ -22,7 +22,7 @@ public enum MenuItems {
     // help menu
     INSTRUCTIONS_NAME("help_menu.instructions_name", false, "&e&lInstructions"),
     INSTRUCTIONS_LORE("help_menu.instructions_lore", true, "&7This page shows instructions for lottery"),
-    INSTRUCTIONS_MATERIAL("help_menu.instructions_material", false, "BOOK_AND_QUILL"),
+    INSTRUCTIONS_MATERIAL("help_menu.instructions_material", false, "WRITABLE_BOOK"),
     HELP_TUTORIAL_NAME("help_menu.help_tutorial_name", false, "&e&lPrize"),
     HELP_TUTORIAL_LORE("help_menu.help_tutorial_lore", true,
             "&7Only one player will be selected as the winner",

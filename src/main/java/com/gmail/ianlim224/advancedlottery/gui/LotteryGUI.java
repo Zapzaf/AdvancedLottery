@@ -1,6 +1,6 @@
 package com.gmail.ianlim224.advancedlottery.gui;
 
-import com.cryptomorin.xseries.XMaterial;
+import com.gmail.ianlim224.advancedlottery.utils.Materials;
 import com.gmail.ianlim224.advancedlottery.AdvancedLottery;
 import com.gmail.ianlim224.advancedlottery.ItemGrabber;
 import com.gmail.ianlim224.advancedlottery.items.MenuItems;
@@ -144,7 +144,7 @@ public class LotteryGUI {
 
             for (int i : PANE_SLOTS) {
                 //parse item allows for itemstack data to be changed
-                inv.setItem(i, new ItemBuilder(XMaterial.matchXMaterial(MenuItems.MENU_PANE_MATERIAL.getStringValue()).get().parseItem())
+                inv.setItem(i, new ItemBuilder(Materials.resolve(MenuItems.MENU_PANE_MATERIAL.getStringValue()))
                         .setName(" ").toItemStack());
             }
 

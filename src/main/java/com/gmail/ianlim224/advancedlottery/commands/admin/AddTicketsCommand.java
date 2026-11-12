@@ -1,12 +1,12 @@
 package com.gmail.ianlim224.advancedlottery.commands.admin;
 
+import com.gmail.ianlim224.advancedlottery.utils.SpigotCommons;
 import com.gmail.ianlim224.advancedlottery.AdvancedLottery;
 import com.gmail.ianlim224.advancedlottery.commands.CommandResponse;
 import com.gmail.ianlim224.advancedlottery.commands.Executable;
 import com.gmail.ianlim224.advancedlottery.commands.Permissions;
 import com.gmail.ianlim224.advancedlottery.messages.Messages;
 import com.gmail.ianlim224.advancedlottery.object.Purchase;
-import org.apache.commons.lang.math.NumberUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -23,7 +23,7 @@ public class AddTicketsCommand implements Executable {
             return CommandResponse.SUCCESS;
         }
 
-        if (!NumberUtils.isDigits(args[2])) {
+        if (!SpigotCommons.isNonNegativeInt(args[2])) {
             sender.sendMessage(AdvancedLottery.f("&cInvalid arguments. Please check command syntax" +
                     " and make sure that the amount of tickets is a positive integer!"));
             return CommandResponse.SUCCESS;
