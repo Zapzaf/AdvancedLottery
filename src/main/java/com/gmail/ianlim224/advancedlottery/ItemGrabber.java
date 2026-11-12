@@ -1,6 +1,6 @@
 package com.gmail.ianlim224.advancedlottery;
 
-import com.cryptomorin.xseries.XMaterial;
+import com.gmail.ianlim224.advancedlottery.utils.Materials;
 import org.bukkit.inventory.ItemStack;
 
 import com.gmail.ianlim224.advancedlottery.items.MenuItems;
@@ -37,23 +37,23 @@ public class ItemGrabber {
 	
 	private ItemGrabber(AdvancedLottery plugin) {
 		try {
-		setPreviousArrow(new ItemBuilder(new ItemStack(XMaterial.matchXMaterial(MenuItems.PREVIOUS_PAGE_MATERIAL.getStringValue()).get().parseMaterial())).setName(MenuItems.PREVIOUS_PAGE_NAME.getStringValue()).setLore(MenuItems.PREVIOUS_PAGE_LORE.getListValue()).toItemStack());
-		setNextArrow(new ItemBuilder(new ItemStack(XMaterial.matchXMaterial(MenuItems.NEXT_PAGE_MATERIAL.getStringValue()).get().parseMaterial())).setName(MenuItems.NEXT_PAGE_NAME.getStringValue()).setLore(MenuItems.NEXT_PAGE_LORE.getListValue()).toItemStack());
-		setBookInstructions(new ItemBuilder(new ItemStack(XMaterial.matchXMaterial(MenuItems.INSTRUCTIONS_MATERIAL.getStringValue()).get().parseMaterial()))
+		setPreviousArrow(new ItemBuilder(new ItemStack(Materials.resolve(MenuItems.PREVIOUS_PAGE_MATERIAL.getStringValue()))).setName(MenuItems.PREVIOUS_PAGE_NAME.getStringValue()).setLore(MenuItems.PREVIOUS_PAGE_LORE.getListValue()).toItemStack());
+		setNextArrow(new ItemBuilder(new ItemStack(Materials.resolve(MenuItems.NEXT_PAGE_MATERIAL.getStringValue()))).setName(MenuItems.NEXT_PAGE_NAME.getStringValue()).setLore(MenuItems.NEXT_PAGE_LORE.getListValue()).toItemStack());
+		setBookInstructions(new ItemBuilder(new ItemStack(Materials.resolve(MenuItems.INSTRUCTIONS_MATERIAL.getStringValue())))
 			.setName(AdvancedLottery.f(MenuItems.INSTRUCTIONS_NAME.getStringValue())).setLore(MenuItems.INSTRUCTIONS_LORE.getListValue()).toItemStack());
-		setWinNavigator(new ItemBuilder(new ItemStack(XMaterial.matchXMaterial(MenuItems.HELP_TUTORIAL_MATERIAL.getStringValue()).get().parseMaterial()))
+		setWinNavigator(new ItemBuilder(new ItemStack(Materials.resolve(MenuItems.HELP_TUTORIAL_MATERIAL.getStringValue())))
 			.setName(MenuItems.HELP_TUTORIAL_NAME.getStringValue())
 			.setLore(MenuItems.HELP_TUTORIAL_LORE.getListValue())
 			.toItemStack());
-		setConfirmBuy(new ItemBuilder(new ItemStack(XMaterial.matchXMaterial(MenuItems.CONFIRM_BLOCK_MATERIAL.getStringValue()).get().parseMaterial())).setName(MenuItems.CONFIRM_BLOCK_NAME.getStringValue()).toItemStack());
-		setCancelBuy(new ItemBuilder(new ItemStack(XMaterial.matchXMaterial(MenuItems.CANCEL_BLOCK_MATERIAL.getStringValue()).get().parseMaterial())).setName(MenuItems.CANCEL_BLOCK_NAME.getStringValue()).toItemStack());
-		setBuyNavigator(new ItemBuilder(new ItemStack(XMaterial.matchXMaterial(MenuItems.CONFIRM_INFO_MATERIAL.getStringValue()).get().parseMaterial())).setName(MenuItems.CONFIRM_INFO_NAME.getStringValue()).setLore(MenuItems.CONFIRM_INFO_LORE.getListValue()).toItemStack());
-		setBuyButton(new ItemBuilder(new ItemStack(XMaterial.matchXMaterial(MenuItems.BUY_TICKET_MATERIAL.getStringValue()).get().parseMaterial())).setName(MenuItems.BUY_TICKET_NAME.getStringValue()).setLore(MenuItems.BUY_TICKET_LORE.getListValue()).toItemStack());
-		setCommandHelp(new ItemBuilder(new ItemStack(XMaterial.matchXMaterial(MenuItems.COMMAND_INTRO_MATERIAL.getStringValue()).get().parseMaterial())).setName(MenuItems.COMMAND_INTRO_NAME.getStringValue()).setLore(
+		setConfirmBuy(new ItemBuilder(new ItemStack(Materials.resolve(MenuItems.CONFIRM_BLOCK_MATERIAL.getStringValue()))).setName(MenuItems.CONFIRM_BLOCK_NAME.getStringValue()).toItemStack());
+		setCancelBuy(new ItemBuilder(new ItemStack(Materials.resolve(MenuItems.CANCEL_BLOCK_MATERIAL.getStringValue()))).setName(MenuItems.CANCEL_BLOCK_NAME.getStringValue()).toItemStack());
+		setBuyNavigator(new ItemBuilder(new ItemStack(Materials.resolve(MenuItems.CONFIRM_INFO_MATERIAL.getStringValue()))).setName(MenuItems.CONFIRM_INFO_NAME.getStringValue()).setLore(MenuItems.CONFIRM_INFO_LORE.getListValue()).toItemStack());
+		setBuyButton(new ItemBuilder(new ItemStack(Materials.resolve(MenuItems.BUY_TICKET_MATERIAL.getStringValue()))).setName(MenuItems.BUY_TICKET_NAME.getStringValue()).setLore(MenuItems.BUY_TICKET_LORE.getListValue()).toItemStack());
+		setCommandHelp(new ItemBuilder(new ItemStack(Materials.resolve(MenuItems.COMMAND_INTRO_MATERIAL.getStringValue()))).setName(MenuItems.COMMAND_INTRO_NAME.getStringValue()).setLore(
 				MenuItems.COMMAND_INTRO_LORE.getListValue()
 		).toItemStack());
-		setAdd(new ItemBuilder(XMaterial.matchXMaterial(MenuItems.ADD_TICKET_MATERIAL.getStringValue()).get().parseMaterial()).setName(MenuItems.ADD_TICKET_NAME.getStringValue()).setLore(MenuItems.ADD_TICKET_LORE.getListValue()).toItemStack());
-		setMinus(new ItemBuilder(XMaterial.matchXMaterial(MenuItems.MINUS_TICKET_MATERIAL.getStringValue()).get().parseMaterial()).setName(MenuItems.MINUS_TICKET_NAME.getStringValue()).setLore(MenuItems.MINUS_TICKET_LORE.getListValue()).toItemStack());
+		setAdd(new ItemBuilder(Materials.resolve(MenuItems.ADD_TICKET_MATERIAL.getStringValue())).setName(MenuItems.ADD_TICKET_NAME.getStringValue()).setLore(MenuItems.ADD_TICKET_LORE.getListValue()).toItemStack());
+		setMinus(new ItemBuilder(Materials.resolve(MenuItems.MINUS_TICKET_MATERIAL.getStringValue())).setName(MenuItems.MINUS_TICKET_NAME.getStringValue()).setLore(MenuItems.MINUS_TICKET_LORE.getListValue()).toItemStack());
 		
 		} catch (Exception e) {
 			System.out.println("---------------------------------");

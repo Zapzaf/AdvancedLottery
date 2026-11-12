@@ -1,6 +1,5 @@
 package com.gmail.ianlim224.advancedlottery.time;
 
-import com.cryptomorin.xseries.messages.Titles;
 import com.gmail.ianlim224.advancedlottery.AdvancedLottery;
 import com.gmail.ianlim224.advancedlottery.fireworks.Fireworks;
 import com.gmail.ianlim224.advancedlottery.gui.LotteryGUI;
@@ -115,12 +114,13 @@ public class LotteryTimer {
 
         if (plugin.getConfig().getBoolean("play_out_title_when_win")) {
             for (Player p : Bukkit.getOnlinePlayers()) {
-                Titles.sendTitle(p, (int) (AdvancedLottery.getLotteryGrabber().getFadeInSeconds() * 20),
-                        (int) (AdvancedLottery.getLotteryGrabber().getStaySeconds() * 20),
-                        (int) (AdvancedLottery.getLotteryGrabber().getFadeOutSeconds() * 20),
+                p.sendTitle(
                         Messages.WINNER_TITLE_MESSAGE.getConfigValue(p).replaceAll("%player%", winner.getName()),
                         Messages.WINNER_SUBTITLE_MESSAGE.getConfigValue(p).replaceAll("%money%",
-                                SpigotCommons.formatMoney(prize)));
+                                SpigotCommons.formatMoney(prize)),
+                        (int) (AdvancedLottery.getLotteryGrabber().getFadeInSeconds() * 20),
+                        (int) (AdvancedLottery.getLotteryGrabber().getStaySeconds() * 20),
+                        (int) (AdvancedLottery.getLotteryGrabber().getFadeOutSeconds() * 20));
             }
         }
     }

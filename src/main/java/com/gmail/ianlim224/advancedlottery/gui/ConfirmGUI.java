@@ -1,6 +1,6 @@
 package com.gmail.ianlim224.advancedlottery.gui;
 
-import com.cryptomorin.xseries.XMaterial;
+import com.gmail.ianlim224.advancedlottery.utils.Materials;
 import com.gmail.ianlim224.advancedlottery.AdvancedLottery;
 import com.gmail.ianlim224.advancedlottery.ItemGrabber;
 import com.gmail.ianlim224.advancedlottery.items.MenuItems;
@@ -57,7 +57,7 @@ public class ConfirmGUI implements Listener {
     }
 
     private ItemStack getTicketAmountItem(final int amount) {
-        return new ItemBuilder(XMaterial.matchXMaterial(MenuItems.TICKET_AMOUNT_MATERIAL.getStringValue()).get().parseMaterial()).setName(
+        return new ItemBuilder(Materials.resolve(MenuItems.TICKET_AMOUNT_MATERIAL.getStringValue())).setName(
                 MenuItems.TICKET_AMOUNT_NAME.getStringValue().replaceAll("%ticket%", Integer.toString(amount)))
                 .setLore(AdvancedLottery.replace(AdvancedLottery.replace(MenuItems.TICKET_AMOUNT_LORE.getListValue(), "%money%",
                         SpigotCommons.formatMoney(amount * plugin.getConfig().getDouble("buy_price"))), "%ticket%", Integer.toString(amount)))

@@ -12,7 +12,6 @@ import com.gmail.ianlim224.advancedlottery.gui.LotteryGUI;
 import com.gmail.ianlim224.advancedlottery.hooks.AdvancedLotteryExpansion;
 import com.gmail.ianlim224.advancedlottery.hooks.VaultEcon;
 import com.gmail.ianlim224.advancedlottery.items.MenuItems;
-import com.gmail.ianlim224.advancedlottery.legacy.LegacySkullImpl;
 import com.gmail.ianlim224.advancedlottery.legacy.SkullManager;
 import com.gmail.ianlim224.advancedlottery.legacy.V_1_13_SkullImpl;
 import com.gmail.ianlim224.advancedlottery.listeners.InventoryClick;
@@ -95,14 +94,7 @@ public class AdvancedLottery extends JavaPlugin {
     public void onEnable() {
         instance = this;
 
-        if (Material.getMaterial("LEGACY_AIR") != null) {
-            skullManager = new V_1_13_SkullImpl();
-            getLogger().info("Detected server running on 1.13 or newer version");
-        } else {
-            skullManager = new LegacySkullImpl();
-            getLogger().info("Detected server running on older version." +
-                    " Implementing legacy skull manager...");
-        }
+        skullManager = new V_1_13_SkullImpl();
 
         if (!vaultEcon.setupEconomy()) {
             getLogger().severe("Disabled due to no Vault dependency found!");
